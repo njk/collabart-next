@@ -19,8 +19,8 @@ export default function ArtistHome({artist, works}) {
           {works.map(work => {
             const image_uri = work.image.secure_url
             const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
-            return (<div>
-            <img key={work._id} src={image_uri} alt={work.title}/>
+            return (<div key={work._id}>
+            <img src={image_uri} alt={work.title}/>
             <p>
               {work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}
             </p>
