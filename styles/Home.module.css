@@ -114,11 +114,15 @@
   height: 1em;
 }
 
+.works img{
+  width: 100%;
+}
 
 .header ul{
   list-style-type:none;
   padding: 0px;
 }
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
