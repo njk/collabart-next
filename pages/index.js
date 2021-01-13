@@ -17,12 +17,12 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://werkliste.ch"
+          href="https://gute-programme.com"
           target="_blank"
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          Werkliste
+          Gute Programme
         </a>
       </footer>
     </div>

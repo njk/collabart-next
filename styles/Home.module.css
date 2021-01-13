@@ -126,7 +126,8 @@
   margin-top: 0.2em;
 }
 
-.header ul{
+.header ul,
+.footer ul{
   list-style-type:none;
   padding: 0px;
 }

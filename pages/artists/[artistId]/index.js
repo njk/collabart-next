@@ -28,7 +28,7 @@ export default function ArtistHome({artist, works}) {
           })}
         </div>
       </main>
-      <Footer />
+      <Footer artist={artist}/>
 
     </div>
     )
