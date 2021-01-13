@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import styles from '../styles/Home.module.css'
 
 const Header = ({artist}) => {
 
-  return (<header>
+  return (<header className={styles.header}>
       <ul>
         <li>
           <Link href={"/artists/"+artist._id}>

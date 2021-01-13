@@ -114,6 +114,11 @@
   height: 1em;
 }
 
+
+.header ul{
+  list-style-type:none;
+  padding: 0px;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
