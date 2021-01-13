@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import styles from '../../../styles/Home.module.css'
-import Header from '../../../components/header'
-import Footer from '../../../components/footer'
-import HTMLHead from '../../../components/htmlhead'
+import Header from '../../../components/Header'
+import Footer from '../../../components/Footer'
+import HTMLHead from '../../../components/HTMLHead'
 
 const Imprint = () => {
 	const { query } = useRouter()
