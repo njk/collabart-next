@@ -17,7 +17,7 @@ export default function ArtistHome({artist, works}) {
         </h1>
         <div className={styles.works}>
           {works.map(work => {
-            const image_uri = work.image.secure_url
+            const image_uri = work.image.secure_url || work.image.s3_url
             const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
             return (<div key={work._id}>
             <img src={image_uri} alt={work.title}/>
