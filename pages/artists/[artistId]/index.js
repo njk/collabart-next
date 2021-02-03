@@ -2,8 +2,7 @@ import styles from '../../../styles/Home.module.css'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import HTMLHead from '../../../components/HTMLHead'
-
-const BACKEND_URI = process.env.NEXT_PUBLIC_BACKEND_URI
+import { BACKEND_URI } from '../../../config/statics'
 
 export default function ArtistHome({artist, works}) {
 
