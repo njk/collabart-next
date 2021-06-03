@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from '../../../styles/Home.module.css'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
@@ -18,11 +19,9 @@ export default function ArtistHome({artist, works}) {
           {works.map(work => {
             const image_uri = work.image.secure_url || work.image.s3_url
             const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
-            return (<div key={work._id}>
-            <img src={image_uri} alt={work.title}/>
-            <p>
-              {work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}
-            </p>
+            return (<div key={work._id} >
+              <div className={styles.workImageBox}><Image src={image_uri} alt={work.title} layout="fill" objectFit="contain"/></div>
+              <div><p>{work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}</p></div>
             </div>)
           })}
         </div>
