@@ -9,7 +9,7 @@ const Imprint = ({artist}) => {
   return (
     <div className={styles.container}>
       <HTMLHead artist={artist}/>
-      <Header artist={artist}/>
+      <Header artist={artist} menuItems={"vita,works"}/>
       <main className={styles.main}>
         <h1 className={styles.title}>Imprint</h1>
 	    <p>{artistName}</p>
