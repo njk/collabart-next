@@ -10,9 +10,9 @@ const Vita = ({ artist }) => {
   return (
     <div className={styles.container}>
       <HTMLHead artist={artist}/>
-      <Header artist={artist}/>
+      <Header artist={artist} menuItems={"works"}/>
       <main className={styles.main}>
-        <h1 className={styles.title}>Vita: {artist.name ? artist.name.first + ' ' + artist.name.last : 'No artist'}</h1>
+        <h1 className={styles.title}>{artist.name ? artist.name.first + ' ' + artist.name.last : 'No artist'}</h1>
 	      <div dangerouslySetInnerHTML={{__html: artist.vita}} />
       </main>
       <Footer artist={artist}/>

@@ -23,7 +23,7 @@ export default function ArtistHome({artist, works}) {
   return (
   	<div className={styles.container}>
       <HTMLHead artist={artist}/>
-      <Header artist={artist}/>
+      <Header artist={artist} menuItems={"vita"}/>
       <main className={styles.main}>
         <h1 className={styles.title}>
           {artist.name ? artist.name.first + ' ' + artist.name.last : 'No artists found for this id'}
