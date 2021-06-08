@@ -32,7 +32,7 @@ export default Imprint
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await fetch(BACKEND_URI+`artists?$limit=10000`)
+  const res = await fetch(BACKEND_URI+`artists?isPublic=true&$limit=10000`)
   const artists = await res.json()
   // Get the paths we want to pre-render based on artists
   const paths = artists.data.map((artist) => `/artists/${artist._id}/imprint`)
