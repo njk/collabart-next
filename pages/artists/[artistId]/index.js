@@ -3,6 +3,20 @@ import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import HTMLHead from '../../../components/HTMLHead'
 import { BACKEND_URI } from '../../../config/statics'
+import { useState } from 'react';
+
+const Work = ({work}) => {
+  const [showDetails, setShowDetails] = useState(false)
+  const image_uri = work.image.secure_url || work.image.s3_url
+  const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
+
+  return (<div key={work._id}>
+    <img src={image_uri} alt={work.title} onClick={() => setShowDetails(!showDetails)}/>
+    <p className={showDetails ? '' : styles.hideDetails}>
+      {work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}
+    </p>
+  </div>)
+}
 
 export default function ArtistHome({artist, works}) {
 
@@ -15,16 +29,7 @@ export default function ArtistHome({artist, works}) {
           {artist.name ? artist.name.first + ' ' + artist.name.last : 'No artists found for this id'}
         </h1>
         <div className={styles.works}>
-          {works.map(work => {
-            const image_uri = work.image.secure_url || work.image.s3_url
-            const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
-            return (<div key={work._id}>
-            <img src={image_uri} alt={work.title}/>
-            <p>
-              {work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}
-            </p>
-            </div>)
-          })}
+          {works.map(work => <Work work={work} />)}
         </div>
       </main>
       <Footer artist={artist}/>

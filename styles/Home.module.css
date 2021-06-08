@@ -129,6 +129,10 @@
   margin-top: 0.2em;
 }
 
+.hideDetails {
+  visibility: hidden;
+}
+
 .header ul,
 .footer ul{
   list-style-type:none;
