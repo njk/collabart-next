@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
-const Header = ({artist, menuItems}) => {
+const Header = ({artist, menuItems = []}) => {
 
   return (<header className={styles.header}>
       <span>
