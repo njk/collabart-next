@@ -133,10 +133,13 @@
   visibility: hidden;
 }
 
-.header ul,
-.footer ul{
-  list-style-type:none;
-  padding: 0px;
+.header {
+  font-size: 1em;
+  margin: 1em 0;
+}
+
+.headerLinkActive {
+  text-decoration: underline;
 }
 
 .advertisement {
