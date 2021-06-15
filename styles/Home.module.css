@@ -142,6 +142,11 @@
   text-decoration: underline;
 }
 
+.footer ul{
+  list-style-type:none;
+  padding: 0px;
+}
+
 .advertisement {
   margin-top: 5em;
   padding:1em;
