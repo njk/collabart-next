@@ -4,6 +4,7 @@ import Footer from '../../../components/Footer'
 import HTMLHead from '../../../components/HTMLHead'
 import { BACKEND_URI } from '../../../config/statics'
 import { useState } from 'react';
+import Image from 'next/image'
 
 const Work = ({work}) => {
   const [showDetails, setShowDetails] = useState(false)
@@ -11,7 +12,9 @@ const Work = ({work}) => {
   const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
 
   return (<div key={work._id}>
-    <img src={image_uri} alt={work.title} onClick={() => setShowDetails(!showDetails)}/>
+    <div className={styles.imageBox}>
+      <Image src={image_uri} alt={work.title} onClick={() => setShowDetails(!showDetails)} layout="fill" objectFit="contain"/>
+    </div>
     <p className={showDetails ? '' : styles.hideDetails}>
       {work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}
     </p>

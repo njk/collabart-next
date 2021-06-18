@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .main a{
@@ -51,6 +52,7 @@
 
 .title {
   margin: 0;
+  margin-bottom: 0.2em;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -118,15 +120,17 @@
 }
 
 .works {
-
-}
-
-.works img{
   width: 100%;
 }
 
 .works p{
   margin-top: 0.2em;
+  padding: 1em;
+}
+
+.imageBox {
+  height:  800px;
+  position:  relative;
 }
 
 .hideDetails {
@@ -157,5 +161,8 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .imageBox {
+      height: 400px;
   }
 }
