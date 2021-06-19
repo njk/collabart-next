@@ -13,7 +13,7 @@ module.exports = {
         has: [
           {
             type: 'host',
-            value: 'sabinekoelmel.com',
+            value: 'www.sabinekoelmel.com',
           },
         ],
         permanent: false,
@@ -26,7 +26,7 @@ module.exports = {
         has: [
           {
             type: 'host',
-            value: 'hannesmichanek.com',
+            value: 'www.hannesmichanek.com',
           },
         ],
         permanent: false,
