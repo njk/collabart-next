@@ -51,10 +51,12 @@
 }
 
 .title {
-  margin: 0;
+  margin-left:  0.5em;
   margin-bottom: 0.2em;
+  margin-right:  auto;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 1.5rem;
+  display: inline-block;
 }
 
 .title,
@@ -121,6 +123,7 @@
 
 .works {
   width: 100%;
+  margin-top: 5em;
 }
 
 .works p{
@@ -139,11 +142,22 @@
 
 .header {
   font-size: 1em;
-  margin: 1em 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background: white;
+  padding-top: 1em;
 }
 
 .headerLinkActive {
   text-decoration: underline;
+}
+
+.menu {
+  position: absolute;
+  right:  0.5em;
+  bottom:  0.5em;
 }
 
 .footer ul{
@@ -155,6 +169,11 @@
   margin-top: 5em;
   padding:1em;
   text-align: center;
+}
+
+.vitaText {
+  width: 100%;
+  padding-left: .7em;
 }
 
 @media (max-width: 600px) {
