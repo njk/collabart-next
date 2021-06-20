@@ -28,9 +28,6 @@ export default function ArtistHome({artist, works}) {
       <HTMLHead artist={artist}/>
       <Header artist={artist} menuItems={"vita"}/>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          {artist.name ? artist.name.first + ' ' + artist.name.last : 'No artist found for this id'}
-        </h1>
         <div className={styles.works}>
           {works.map(work => <Work work={work} />)}
         </div>

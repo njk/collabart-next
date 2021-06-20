@@ -12,7 +12,6 @@ const Vita = ({ artist }) => {
       <HTMLHead artist={artist}/>
       <Header artist={artist} menuItems={"works"}/>
       <main className={styles.main}>
-        <h1 className={styles.title}>{artist.name ? artist.name.first + ' ' + artist.name.last : 'No artist'}</h1>
 	      <div className={styles.vitaText}>
           <div dangerouslySetInnerHTML={{__html: artist.vita}} />
         </div>

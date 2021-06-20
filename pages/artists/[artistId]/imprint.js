@@ -11,9 +11,8 @@ const Imprint = ({artist}) => {
       <HTMLHead artist={artist}/>
       <Header artist={artist}/>
       <main className={styles.main}>
-        <h1 className={styles.title}>Imprint</h1>
-	    <p>{artistName}</p>
-	    <p>c/o Nicolas Kölmel
+  	    <p>{artistName}</p>
+  	    <p>c/o Nicolas Kölmel
 	    	<br/>
 	    	Gute Programme
 	    	<br/>
