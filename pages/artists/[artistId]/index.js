@@ -26,7 +26,7 @@ export default function ArtistHome({artist, works}) {
   return (
   	<div className={styles.container}>
       <HTMLHead artist={artist}/>
-      <Header artist={artist} menuItems={"vita"}/>
+      <Header artist={artist} menuItems={artist.vita && artist.vita.length ? "vita" : undefined}/>
       <main className={styles.main}>
         <div className={styles.works}>
           {works.map(work => <Work work={work} />)}
