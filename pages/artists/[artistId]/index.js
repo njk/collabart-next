@@ -22,6 +22,16 @@ const Work = ({work}) => {
 }
 
 export default function ArtistHome({artist, works}) {
+  const [ newWorks, setNewWorks ] = useState([])
+
+  useEffect(() => {
+    async function fetchWorks() {
+      const resWorks = await fetch(BACKEND_URI+`works?artists=${artist._id}&$limit=25&$sort[publishedDate]=-1`)
+      const worksArray = (await resWorks.json()).data
+      setNewWorks(worksArray)
+    }
+    fetchWorks()
+  }, [])
 
   return (
   	<div className={styles.container}>
@@ -29,7 +39,7 @@ export default function ArtistHome({artist, works}) {
       <Header artist={artist} menuItems={artist.vita && artist.vita.length ? "vita" : undefined}/>
       <main className={styles.main}>
         <div className={styles.works}>
-          {works.map(work => <Work work={work} />)}
+          {newWorks.length ? newWorks.map(work => <Work work={work} alwaysDetails={artist.showDetails}/>) : works.map(work => <Work work={work} />)}
         </div>
       </main>
       <Footer artist={artist}/>
@@ -47,8 +57,7 @@ export async function getStaticPaths() {
   const paths = artists.data.map((artist) => `/artists/${artist._id}`)
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }  	
-	
+  return { paths, fallback: false }
 }
 
 // This also gets called at build time
