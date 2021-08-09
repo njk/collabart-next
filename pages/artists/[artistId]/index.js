@@ -6,8 +6,11 @@ import { BACKEND_URI } from '../../../config/statics'
 import { useState, useEffect } from 'react';
 import Image from 'next/image'
 
-const Work = ({work}) => {
+const Work = ({work, alwaysDetails}) => {
   const [showDetails, setShowDetails] = useState(false)
+  useEffect(() => {
+    setShowDetails(alwaysDetails)
+  }, [])
   const image_uri = work.image.secure_url || work.image.s3_url
   const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
   const techniqueId = work.techniques && work.techniques[0]
@@ -24,7 +27,7 @@ const Work = ({work}) => {
 
   return (<div key={work._id}>
     <div className={styles.imageBox}>
-      <Image src={image_uri} alt={work.title} onClick={() => setShowDetails(!showDetails)} layout="fill" objectFit="contain"/>
+      <Image src={image_uri} alt={work.title} onClick={alwaysDetails === false ? () => setShowDetails(!showDetails) : undefined} layout="fill" objectFit="contain"/>
     </div>
     <p className={showDetails ? '' : styles.hideDetails}>
       {work.title}, {new Date(work.publishedDate).getFullYear()}{technique ? ', '+technique.name : ''}{dimensions}
