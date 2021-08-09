@@ -10,7 +10,7 @@ const Work = ({work, alwaysDetails}) => {
   const [showDetails, setShowDetails] = useState(false)
   useEffect(() => {
     setShowDetails(alwaysDetails)
-  }, [])
+  }, [alwaysDetails])
   const image_uri = work.image.secure_url || work.image.s3_url
   const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
   const techniqueId = work.techniques && work.techniques[0]
