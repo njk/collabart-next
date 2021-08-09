@@ -3,20 +3,31 @@ import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import HTMLHead from '../../../components/HTMLHead'
 import { BACKEND_URI } from '../../../config/statics'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image'
 
 const Work = ({work}) => {
   const [showDetails, setShowDetails] = useState(false)
   const image_uri = work.image.secure_url || work.image.s3_url
   const dimensions = work.dimensions ? ", "+work.dimensions.height+"x"+work.dimensions.width+"cm" : ""
+  const techniqueId = work.techniques && work.techniques[0]
+
+  const [technique, setTechnique] = useState()
+  useEffect(() => {
+    async function fetchTechnique() {
+      const techniqueFetched = await fetch(BACKEND_URI+`techniques/${techniqueId}`)
+      const techniqueJson = await techniqueFetched.json()
+      setTechnique(techniqueJson)
+    }
+    fetchTechnique()
+  }, [])
 
   return (<div key={work._id}>
     <div className={styles.imageBox}>
       <Image src={image_uri} alt={work.title} onClick={() => setShowDetails(!showDetails)} layout="fill" objectFit="contain"/>
     </div>
     <p className={showDetails ? '' : styles.hideDetails}>
-      {work.title}, {new Date(work.publishedDate).getFullYear()}{dimensions}
+      {work.title}, {new Date(work.publishedDate).getFullYear()}{technique ? ', '+technique.name : ''}{dimensions}
     </p>
   </div>)
 }
