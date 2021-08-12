@@ -40,7 +40,7 @@ export default function ArtistHome({artist, works}) {
 
   useEffect(() => {
     async function fetchWorks() {
-      const resWorks = await fetch(BACKEND_URI+`works?artists=${artist._id}&$limit=25&$sort[publishedDate]=-1`)
+      const resWorks = await fetch(BACKEND_URI+`works?artists=${artist._id}&$limit=1000&$sort[publishedDate]=-1`)
       const worksArray = (await resWorks.json()).data
       setNewWorks(worksArray)
     }
@@ -79,7 +79,7 @@ export async function getStaticProps({ params }) {
   // params contains the artist `id`.
   // If the route is like /artist/1, then params.id is 1
   const resArtist = await fetch(BACKEND_URI+`artists/${params.artistId}`)
-  const resWorks = await fetch(BACKEND_URI+`works?artists=${params.artistId}&$limit=25&$sort[publishedDate]=-1`)
+  const resWorks = await fetch(BACKEND_URI+`works?artists=${params.artistId}&$limit=1000&$sort[publishedDate]=-1`)
   const artist = await resArtist.json()
   const works = (await resWorks.json()).data
   // Pass artist data to the page via props
