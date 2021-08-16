@@ -53,7 +53,7 @@ export default function ArtistHome({artist, works}) {
       <Header artist={artist} menuItems={artist.vita && artist.vita.length ? "vita" : undefined}/>
       <main className={styles.main}>
         <div className={styles.works}>
-          {newWorks.length ? newWorks.map(work => <Work work={work} alwaysDetails={artist.showDetails}/>) : works.map(work => <Work work={work} />)}
+          {newWorks.length ? newWorks.map(work => <Work work={work} alwaysDetails={artist.showDetails ? true : false}/>) : works.map(work => <Work work={work} />)}
         </div>
       </main>
       <Footer artist={artist}/>
