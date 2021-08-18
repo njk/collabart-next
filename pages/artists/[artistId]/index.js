@@ -5,6 +5,8 @@ import HTMLHead from '../../../components/HTMLHead'
 import { BACKEND_URI } from '../../../config/statics'
 import { useState, useEffect } from 'react';
 import Image from 'next/image'
+import IconButton from '@material-ui/core/IconButton';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Work = ({work, alwaysDetails}) => {
   const [showDetails, setShowDetails] = useState(false)
@@ -35,8 +37,9 @@ const Work = ({work, alwaysDetails}) => {
   </div>)
 }
 
-export default function ArtistHome({artist, works}) {
-  const [ newWorks, setNewWorks ] = useState([])
+export default function ArtistHome({artist, works = []}) {
+  const [ newWorks, setNewWorks ] = useState(works)
+  const [ showCount, setShowCount ] = useState(10)
 
   useEffect(() => {
     async function fetchWorks() {
@@ -53,8 +56,13 @@ export default function ArtistHome({artist, works}) {
       <Header artist={artist} menuItems={artist.vita && artist.vita.length ? "vita" : undefined}/>
       <main className={styles.main}>
         <div className={styles.works}>
-          {newWorks.length ? newWorks.map(work => <Work key={work._id} work={work} alwaysDetails={artist.showDetails ? true : false}/>) : works.map(work => <Work work={work} key={work._id} alwaysDetails={artist.showDetails ? true : false}/>)}
+          {newWorks.length && newWorks.slice(0, showCount).map(work => <Work key={work._id} work={work} alwaysDetails={artist.showDetails ? true : false}/>)}
         </div>
+        {showCount < newWorks.length &&
+          <IconButton aria-label="show-more" color="primary" onClick={() => setShowCount(showCount + 10)}>
+            <ExpandMoreIcon />
+          </IconButton>
+        }
       </main>
       <Footer artist={artist}/>
 
