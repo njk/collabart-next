@@ -43,7 +43,7 @@ export default function ArtistHome({artist, works}) {
       const resWorks = await fetch(BACKEND_URI+`works?artists=${artist._id}&$limit=1000&$sort[publishedDate]=-1`)
       const worksArray = (await resWorks.json()).data
       setNewWorks(worksArray)
-    }
+    }    
     fetchWorks()
   }, [])
 
@@ -53,7 +53,7 @@ export default function ArtistHome({artist, works}) {
       <Header artist={artist} menuItems={artist.vita && artist.vita.length ? "vita" : undefined}/>
       <main className={styles.main}>
         <div className={styles.works}>
-          {newWorks.length ? newWorks.map(work => <Work work={work} alwaysDetails={artist.showDetails ? true : false}/>) : works.map(work => <Work work={work} />)}
+          {newWorks.length ? newWorks.map(work => <Work key={work._id} work={work} alwaysDetails={artist.showDetails ? true : false}/>) : works.map(work => <Work work={work} key={work._id} alwaysDetails={artist.showDetails ? true : false}/>)}
         </div>
       </main>
       <Footer artist={artist}/>
