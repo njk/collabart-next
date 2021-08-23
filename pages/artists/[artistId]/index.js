@@ -29,7 +29,13 @@ const Work = ({work, alwaysDetails}) => {
 
   return (<div key={work._id}>
     <div className={styles.imageBox}>
-      <Image src={image_uri} alt={work.title} onClick={alwaysDetails === false ? () => setShowDetails(!showDetails) : undefined} layout="fill" objectFit="contain"/>
+      <Image 
+        src={image_uri} 
+        alt={work.title} 
+        onClick={alwaysDetails === false ? () => setShowDetails(!showDetails) : undefined} 
+        layout="fill" 
+        objectFit="contain"
+        priority={true}/>
     </div>
     <p className={showDetails ? '' : styles.hideDetails}>
       {work.title}, {new Date(work.publishedDate).getFullYear()}{technique ? ', '+technique.name : ''}{dimensions}
