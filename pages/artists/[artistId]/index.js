@@ -46,15 +46,18 @@ const Work = ({work, alwaysDetails}) => {
 export default function ArtistHome({artist, works = []}) {
   const [ newWorks, setNewWorks ] = useState(works)
   const [ showCount, setShowCount ] = useState(10)
+  const [ workCount , setWorkCount ] = useState(30)
+  const showDetails = artist.showDetails === true
 
   useEffect(() => {
     async function fetchWorks() {
-      const resWorks = await fetch(BACKEND_URI+`works?artists=${artist._id}&$limit=1000&$sort[publishedDate]=-1`)
-      const worksArray = (await resWorks.json()).data
-      setNewWorks(worksArray)
+      const resWorks = await fetch(BACKEND_URI+`works?artists=${artist._id}&$limit=${showCount}&$sort[publishedDate]=-1`)
+      const worksJson = await resWorks.json()
+      setWorkCount(worksJson.total)
+      setNewWorks(worksJson.data)
     }    
     fetchWorks()
-  }, [])
+  }, [showCount])
 
   return (
   	<div className={styles.container}>
@@ -62,9 +65,9 @@ export default function ArtistHome({artist, works = []}) {
       <Header artist={artist} menuItems={artist.vita && artist.vita.length ? "vita" : undefined}/>
       <main className={styles.main}>
         <div className={styles.works}>
-          {newWorks.length && newWorks.slice(0, showCount).map(work => <Work key={work._id} work={work} alwaysDetails={artist.showDetails ? true : false}/>)}
+          {newWorks.map(work => <Work key={work._id} work={work} alwaysDetails={showDetails}/>)}
         </div>
-        {showCount < newWorks.length &&
+        {showCount < workCount &&
           <IconButton aria-label="show-more" color="primary" onClick={() => setShowCount(showCount + 10)}>
             <ExpandMoreIcon />
           </IconButton>
@@ -93,7 +96,7 @@ export async function getStaticProps({ params }) {
   // params contains the artist `id`.
   // If the route is like /artist/1, then params.id is 1
   const resArtist = await fetch(BACKEND_URI+`artists/${params.artistId}`)
-  const resWorks = await fetch(BACKEND_URI+`works?artists=${params.artistId}&$limit=1000&$sort[publishedDate]=-1`)
+  const resWorks = await fetch(BACKEND_URI+`works?artists=${params.artistId}&$limit=20&$sort[publishedDate]=-1`)
   const artist = await resArtist.json()
   const works = (await resWorks.json()).data
   // Pass artist data to the page via props
