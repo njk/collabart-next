@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-.main a{
+.main a {
   font-weight: bold;
 }
 
@@ -51,9 +51,9 @@
 }
 
 .title {
-  margin-left:  0.5em;
+  margin-left: 0.5em;
   margin-bottom: 0.2em;
-  margin-right:  auto;
+  margin-right: auto;
   line-height: 1.15;
   font-size: 1.5rem;
   display: inline-block;
@@ -126,14 +126,14 @@
   margin-top: 5em;
 }
 
-.works p{
+.works p {
   margin-top: 0.2em;
   padding: 1em;
 }
 
 .imageBox {
-  height:  800px;
-  position:  relative;
+  height: 800px;
+  position: relative;
 }
 
 .hideDetails {
@@ -150,30 +150,36 @@
   padding-top: 1em;
 }
 
+@media print {
+  .header {
+    display: none;
+  }
+}
+
 .headerLinkActive {
   text-decoration: underline;
 }
 
 .menu {
   position: absolute;
-  right:  0.5em;
-  bottom:  0.5em;
+  right: 0.5em;
+  bottom: 0.5em;
 }
 
-.footer ul{
-  list-style-type:none;
+.footer ul {
+  list-style-type: none;
   padding: 0px;
 }
 
 .advertisement {
   margin-top: 5em;
-  padding:1em;
+  padding: 1em;
   text-align: center;
 }
 
 .vitaText {
   width: 100%;
-  padding-left: .7em;
+  padding-left: 0.7em;
 }
 
 @media (max-width: 600px) {
@@ -182,6 +188,10 @@
     flex-direction: column;
   }
   .imageBox {
-      height: 400px;
+    height: 400px;
   }
+}
+
+.workBox {
+  page-break-after: always;
 }
