@@ -154,6 +154,28 @@
   .header {
     display: none;
   }
+
+  .imageBox > div {
+    display: block;
+    height: 80vh;
+    width: 100vw;
+  }
+
+  .workBox {
+    page-break-after: always;
+    height: 100vh;
+    position: relative;
+  }
+
+  .workBox > p {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .works {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .headerLinkActive {
@@ -190,8 +212,4 @@
   .imageBox {
     height: 400px;
   }
-}
-
-.workBox {
-  page-break-after: always;
 }

@@ -46,6 +46,7 @@ const Work = ({ work, alwaysDetails }) => {
           layout="fill"
           objectFit="contain"
           priority={true}
+          className="work-image"
         />
       </div>
       <p className={showDetails ? "" : styles.hideDetails}>
