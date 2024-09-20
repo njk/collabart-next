@@ -32,6 +32,29 @@ const Work = ({ work, alwaysDetails }) => {
     fetchTechnique();
   }, []);
 
+  const getDateText = () => {
+    // publishedDate: { type: Date },
+    // publishedDateAlternative: { type: Date },
+    // dateDivider: { type: String },
+    // isDateNotExact: { type: Boolean, default: false },
+    // isDateUnknown: { type: Boolean, default: false },
+    if (work.isDateNotExact) {
+      return "ca. " + new Date(work.publishedDate).getFullYear();
+    } else if (work.isDateUnknown) {
+      return "unbekannt";
+    } else if (work.dateDivider) {
+      return (
+        new Date(work.publishedDate).getFullYear() +
+        "/" +
+        new Date(work.publishedDateAlternative).getFullYear()
+      );
+    } else if (work.publishedDate) {
+      return new Date(work.publishedDate).getFullYear();
+    } else {
+      return "";
+    }
+  };
+
   return (
     <div key={work._id} className={styles.workBox}>
       <div className={styles.imageBox}>
@@ -50,7 +73,7 @@ const Work = ({ work, alwaysDetails }) => {
         />
       </div>
       <p className={showDetails ? "" : styles.hideDetails}>
-        {work.title}, {new Date(work.publishedDate).getFullYear()}
+        {work.title}, {getDateText()}
         {technique ? ", " + technique.name : ""}
         {dimensions}
       </p>
